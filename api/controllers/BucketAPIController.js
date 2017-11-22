@@ -21,7 +21,7 @@ exports.list_all_objects = function (req, res) {
       var returnList = function (listOfObjects) {
         res.json(listOfObjects);
       }
-      jsonFormatter.ReadFilesAndCreateListOfObjectsJson(data, returnList, s3)
+      jsonFormatter.ReadFilesAndCreateListOfObjectsJson(data, returnList, s3, res)
     }
   });
 };
