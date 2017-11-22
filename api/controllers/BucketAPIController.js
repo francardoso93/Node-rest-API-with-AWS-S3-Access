@@ -10,15 +10,16 @@ var listParams = {
 };
 
 exports.list_all_objects = function (req, res) {
+  console.log('GET /s3/objects');  
   s3.listObjects(listParams, function (err, data) {
-    if (err) throw err;
-    console.log('Tentando buscar objects do buckets');
-    console.log(data);
-
+    console.log('Trying to get full list of objects from bucket');
+    if (err) {
+      console.log(err);
+      throw err;
+    }
     var returnList = function (listOfObjects) {
       res.json(listOfObjects);
     }
-
     jsonFormatter.ReadFilesAndCreateListOfObjectsJson(data, returnList, s3)
   });
 };

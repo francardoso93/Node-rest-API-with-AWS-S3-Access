@@ -15,6 +15,7 @@ exports.ReadFilesAndCreateListOfObjectsJson = function (data, returnList, s3) {
       requestCount++;
       objParams.Key = contents[i].Key; //Check if this really works that way
       s3.getObject(objParams, function (err, file) {
+        console.log('Trying to get object from bucket. Key: ' + objParams.Key);
         if (err) console.log(err, err.stack); // an error occurred
         else {
           var bodyString = file.Body.toString();
